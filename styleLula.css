@@ -1,0 +1,156 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, green, yellow, blue);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#frase {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: white;
+  text-shadow: 0 0 10px yellow, 0 0 20px green;
+  animation: pulse 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px yellow, 0 0 20px green;
+  }
+  50% {
+    text-shadow: 0 0 20px white, 0 0 40px yellow;
+  }
+}
+
+#botao {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(to right, #00a859, #0072bc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+#botao:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+#presente {
+  display: none;
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: cair 2s forwards ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 1s;
+}
+
+#tampa, #caixa {
+  width: 100px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+#tampa {
+  background: #e63946;
+  z-index: 2;
+  border-bottom: none;
+  transition: transform 1s ease;
+}
+
+#caixa {
+  background: #c1121f;
+  border-top: none;
+}
+
+#lacinho {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-top: -25px; /* sobe o lacinho para cima da tampa */
+  z-index: 3;
+}
+
+#lacinho::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: gold;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+
+#lacinho::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 25px;
+  height: 30px;
+  background: gold;
+  clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+  transform-origin: left center;
+  transform: rotate(-20deg);
+}
+
+#lacinho > div {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 25px;
+  height: 30px;
+  background: gold;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+  transform-origin: right center;
+  transform: rotate(20deg);
+}
+
+#imagem {
+  display: none;
+  position: relative;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 300px;
+  z-index: 5;
+}
+
+@keyframes cair {
+  from {
+    top: -150px;
+  }
+  to {
+    top: calc(100% - 100px);
+  }
+}
